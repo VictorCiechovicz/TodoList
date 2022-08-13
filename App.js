@@ -17,18 +17,27 @@ export default function App() {
     setTaskItems([...taskItems, task])
     setTask(null)
   }
+  const completaTask = index => {
+    let itemsCopy = [...taskItems]
+    itemsCopy.splice(index, 1)
+    setTaskItems(itemsCopy)
+  }
+
   return (
     <View style={estilos.container}>
       <View style={estilos.tasksWrapper}>
         <Text style={estilos.title}>Today's tasks!</Text>
 
         <View style={estilos.items}>
-          {taskItems.map(item => {
-            return <Item text={item} />
+          {taskItems.map((item, index) => {
+            return (
+              <TouchableOpacity onPress={() => completaTask(index)} key={index}>
+                <Item text={item} />
+              </TouchableOpacity>
+            )
           })}
         </View>
 
-        
         <View style={estilos.addTasksWrapper}>
           <View style={estilos.containerAddTasksWrapper}>
             <TextInput
@@ -55,19 +64,20 @@ const estilos = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgba(232, 234, 237, 1)'
   },
+  tasksWrapper: {
+    marginTop: 94,
+    marginLeft: 20,
+    justifyContent: 'space-between'
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 30
   },
-  tasksWrapper: {
-    marginTop: 94,
-    marginLeft: 20
-  },
 
   addTasksWrapper: {
-    marginTop: 379,
-    marginBottom: 37,
+    position: 'absolute',
+    marginTop: 600,
     marginLeft: 20
   },
   containerAddTasksWrapper: {
