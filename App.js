@@ -5,19 +5,23 @@ import {
   View,
   TouchableOpacity,
   TextInput,
-  SafeAreaView
+  SafeAreaView,
+  ImageBackground
 } from 'react-native'
 
 import Item from './Componentes/Task/index'
+import topo from './assets/Topo.jpg'
 import { Ionicons } from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 export default function App() {
-  const [task, setTask] = useState()
+  const [task, setTask] = useState('')
   const [taskItems, setTaskItems] = useState([])
 
   const recebeAddtask = () => {
-    setTaskItems([...taskItems, task])
-    setTask(null)
+    if (task !== '') {
+      setTaskItems([...taskItems, task])
+    }
   }
   const completaTask = index => {
     let itemsCopy = [...taskItems]
@@ -28,7 +32,15 @@ export default function App() {
   return (
     <SafeAreaView style={estilos.container}>
       <View style={estilos.tasksWrapper}>
-        <Text style={estilos.title}>Today's tasks!</Text>
+        <ImageBackground source={topo} style={estilos.imagemTopo}>
+          <MaterialCommunityIcons
+            name="robot-happy-outline"
+            size={50}
+            color="white"
+            style={{ marginTop: 20 }}
+          />
+          <Text style={estilos.title}>Today's tasks!</Text>
+        </ImageBackground>
 
         <View style={estilos.addTasksWrapper}>
           <View style={estilos.containerAddTasksWrapper}>
@@ -40,14 +52,8 @@ export default function App() {
             />
 
             <TouchableOpacity onPress={() => recebeAddtask()}>
-              <View style={estilos.buttonAddTask}>
-                <Text style={estilos.titleButtonAddTask}>
-                  <Ionicons
-                    name="add-circle-outline"
-                    size={50}
-                    color="purple"
-                  />
-                </Text>
+              <View>
+                <Ionicons name="add-circle-outline" size={50} color="purple" />
               </View>
             </TouchableOpacity>
           </View>
@@ -69,22 +75,26 @@ export default function App() {
 const estilos = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(232, 234, 237, 1)'
+    backgroundColor: '#2E0249'
+  },
+  imagemTopo: {
+    width: '100%',
+    height: 150,
+    alignItems: 'center'
   },
   tasksWrapper: {
-    marginTop: 94,
-    marginLeft: 20,
     justifyContent: 'space-between'
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 5
+    marginBottom: 5,
+    color: '#fff'
   },
 
   addTasksWrapper: {
-    marginTop: 5,
-    marginLeft: 5
+    marginTop: 20,
+    marginLeft: 30
   },
   containerAddTasksWrapper: {
     flexDirection: 'row',
@@ -97,19 +107,19 @@ const estilos = StyleSheet.create({
     height: 45,
     borderRadius: 60,
     borderColor: 'purple',
-    borderWidth: 2,
+    borderWidth: 3,
     backgroundColor: 'rgba(255, 255, 255, 1)',
     marginRight: 30,
     marginBottom: 15,
     color: '#c0c0c0'
   },
 
-  buttonAddTask: {
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
+  buttonAddTask: {},
   titleButtonAddTask: {
     fontSize: 50,
     color: 'rgba(192, 192, 192, 1)'
+  },
+  items: {
+    marginHorizontal: 30
   }
 })
