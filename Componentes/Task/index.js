@@ -22,6 +22,8 @@ const estilos = StyleSheet.create({
     alignItems: 'center',
     height: 53,
     borderRadius: 10,
+    borderColor: '#F806CC',
+    borderWidth: 2,
     backgroundColor: 'rgba(246, 246, 246, 1) ',
     marginBottom: 20
   },
@@ -33,7 +35,7 @@ const estilos = StyleSheet.create({
     width: 24,
     height: 24,
     borderRadius: 5,
-    backgroundColor: 'rgba(85, 188, 246, 0.4)'
+    backgroundColor: '#F806CC'
   },
   textItem: {
     fontSize: 14,
@@ -47,7 +49,7 @@ const estilos = StyleSheet.create({
 
     borderRadius: 6,
     borderWidth: 2,
-    borderColor: 'rgba(85, 188, 246, 0.4)'
+    borderColor: '#F806CC'
   }
 })
 export default Item

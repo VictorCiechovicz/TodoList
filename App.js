@@ -53,7 +53,7 @@ export default function App() {
 
             <TouchableOpacity onPress={() => recebeAddtask()}>
               <View>
-                <Ionicons name="add-circle-outline" size={50} color="purple" />
+                <Ionicons name="add-circle-outline" size={50} color="#F806CC" />
               </View>
             </TouchableOpacity>
           </View>
@@ -106,11 +106,11 @@ const estilos = StyleSheet.create({
     width: 270,
     height: 45,
     borderRadius: 60,
-    borderColor: 'purple',
+    borderColor: '#F806CC',
     borderWidth: 3,
     backgroundColor: 'rgba(255, 255, 255, 1)',
     marginRight: 30,
-    marginBottom: 15,
+    marginBottom: 30,
     color: '#c0c0c0'
   },
 
