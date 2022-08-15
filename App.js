@@ -4,10 +4,12 @@ import {
   Text,
   View,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  SafeAreaView
 } from 'react-native'
 
 import Item from './Componentes/Task/index'
+import { Ionicons } from '@expo/vector-icons'
 
 export default function App() {
   const [task, setTask] = useState()
@@ -24,19 +26,9 @@ export default function App() {
   }
 
   return (
-    <View style={estilos.container}>
+    <SafeAreaView style={estilos.container}>
       <View style={estilos.tasksWrapper}>
         <Text style={estilos.title}>Today's tasks!</Text>
-
-        <View style={estilos.items}>
-          {taskItems.map((item, index) => {
-            return (
-              <TouchableOpacity onPress={() => completaTask(index)} key={index}>
-                <Item text={item} />
-              </TouchableOpacity>
-            )
-          })}
-        </View>
 
         <View style={estilos.addTasksWrapper}>
           <View style={estilos.containerAddTasksWrapper}>
@@ -49,13 +41,28 @@ export default function App() {
 
             <TouchableOpacity onPress={() => recebeAddtask()}>
               <View style={estilos.buttonAddTask}>
-                <Text style={estilos.titleButtonAddTask}>+</Text>
+                <Text style={estilos.titleButtonAddTask}>
+                  <Ionicons
+                    name="add-circle-outline"
+                    size={50}
+                    color="purple"
+                  />
+                </Text>
               </View>
             </TouchableOpacity>
           </View>
         </View>
+        <View style={estilos.items}>
+          {taskItems.map((item, index) => {
+            return (
+              <TouchableOpacity onPress={() => completaTask(index)} key={index}>
+                <Item text={item} />
+              </TouchableOpacity>
+            )
+          })}
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 
@@ -72,36 +79,34 @@ const estilos = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 30
+    marginBottom: 5
   },
 
   addTasksWrapper: {
-    position: 'absolute',
-    marginTop: 600,
-    marginLeft: 20
+    marginTop: 5,
+    marginLeft: 5
   },
   containerAddTasksWrapper: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'flex-start'
   },
   boxTask: {
     paddingHorizontal: 15,
     paddingVertical: 15,
-    width: 246,
+    width: 270,
     height: 45,
     borderRadius: 60,
+    borderColor: 'purple',
+    borderWidth: 2,
     backgroundColor: 'rgba(255, 255, 255, 1)',
-    marginRight: 20,
+    marginRight: 30,
+    marginBottom: 15,
     color: '#c0c0c0'
   },
 
   buttonAddTask: {
     justifyContent: 'center',
-    alignItems: 'center',
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: 'rgba(255, 255, 255, 1)'
+    alignItems: 'center'
   },
   titleButtonAddTask: {
     fontSize: 50,
