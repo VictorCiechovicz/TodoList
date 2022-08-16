@@ -103,7 +103,7 @@ const estilos = StyleSheet.create({
   boxTask: {
     paddingHorizontal: 15,
     paddingVertical: 15,
-    width: 270,
+    width: 230,
     height: 45,
     borderRadius: 60,
     borderColor: '#F806CC',
@@ -120,6 +120,6 @@ const estilos = StyleSheet.create({
     color: 'rgba(192, 192, 192, 1)'
   },
   items: {
-    marginHorizontal: 30
+    marginHorizontal: 14
   }
 })
